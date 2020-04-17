@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="ChatApp.SignUp"
+             xmlns:local="clr-namespace:ChatApp"
+             >
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="CustomEntryStyle" TargetType="local:CustomEntry">
+                <Setter Property="Text" Value=""/>
+                <Setter Property="IsCurvedCornersEnabled" Value="True"/>
+                <Setter Property="BorderColor" Value="Black"/>
+                <Setter Property="BorderWidth" Value="5"/>
+                <Setter Property="ReturnType" Value="Next"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <AbsoluteLayout>
+        <StackLayout Orientation="Vertical"  AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" >
+            <Frame BackgroundColor="#1976d2" HeightRequest="215" CornerRadius="0">
+                <Image Source="hermes" />
+            </Frame>
+            <StackLayout Padding="5">
+                <local:CustomEntry  x:Name="usernameEntry" TextChanged="SUEntry_TextChanged" Placeholder="Username" Keyboard="Default" Style="{StaticResource CustomEntryStyle}"/>
+                <local:CustomEntry  x:Name="emailSUEntry" TextChanged="SUEntry_TextChanged" Placeholder="Email" Keyboard="Email" Style="{StaticResource CustomEntryStyle}"/>
+                <Grid>
+                    <local:CustomEntry  x:Name="pass1SUEntry" TextChanged="SUEntry_TextChanged" Placeholder="Password" IsPassword="True" Keyboard="Default" Style="{StaticResource CustomEntryStyle}"/>
+                    <local:CustomButton x:Name="pass1" Clicked="pass1_Clicked"  Text="Show" WidthRequest="50" HeightRequest="5" FontSize="12" Margin="0,2,5,2" HorizontalOptions="End"/>
+                </Grid>
+                <Grid>
+                    <local:CustomEntry  x:Name="pass2SUEntry"  TextChanged="SUEntry_TextChanged" Placeholder="Confirm Password" IsPassword="True" Keyboard="Default" ReturnType="Done" Style="{StaticResource CustomEntryStyle}"/>
+                    <local:CustomButton x:Name="pass2" Clicked="pass1_Clicked"  Text="Show" WidthRequest="50" HeightRequest="5" FontSize="12" Margin="0,2,5,2" HorizontalOptions="End"/>
+                </Grid>
+                <local:CustomButton Clicked="CustomButton_Clicked" Text="Sign Up" HeightRequest="55" CornerRadius="8" BackgroundColor="LightGreen" Margin="0,3,0,3"/>
+                <local:CustomButton Clicked="CustomButton_Clicked_1" Text="Sign In to your account" HeightRequest="55" CornerRadius="8" Margin="0,3,0,3"/>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Frame CornerRadius="7" Padding="0" IsClippedToBounds="True" Grid.Row="0" Grid.Column="0" HeightRequest="29">
+                        <Image Source="GoogleSignIn" Aspect="Fill" VerticalOptions="Center" HorizontalOptions="Center"/>
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="TapGestureRecognizer_Tapped"/>
+                        </Frame.GestureRecognizers>
+                    </Frame>
+                    <Frame CornerRadius="7"  Padding="0" IsClippedToBounds="True" HeightRequest="29" Grid.Row="0" Grid.Column="1">
+                        <Image Source="FacebookSignIn" Aspect="Fill"   VerticalOptions="Center" HorizontalOptions="Center"/>
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="TapGestureRecognizer_Tapped_1"/>
+                        </Frame.GestureRecognizers>
+                    </Frame>
+                </Grid>
+            </StackLayout>
+        </StackLayout>
+        <StackLayout
+            x:Name="aiLayout"
+            IsVisible="False"
+            AbsoluteLayout.LayoutBounds="0,0,1,1"
+            AbsoluteLayout.LayoutFlags="All"
+            >
+            <ActivityIndicator
+                x:Name="ai"
+                IsRunning="False"
+                HorizontalOptions="CenterAndExpand"
+                VerticalOptions="CenterAndExpand"
+                
+                />
+        </StackLayout>
+    </AbsoluteLayout>
+</ContentPage>
